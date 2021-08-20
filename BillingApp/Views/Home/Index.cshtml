@@ -1,0 +1,153 @@
+﻿@*@model IEnumerable<BillingApp.Models.BillerCatalog>*@
+@model PagedList.IPagedList<BillingApp.Models.BillerCatalog>
+    @using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+@using (Html.BeginForm())
+{
+<center>
+    <h2>Billing Details</h2>
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <table class="table table-responsive" style="width:400px">
+                <tr>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.BillerID)*@
+                        @Html.Label("BillerID")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.BillerName)*@
+                        @Html.Label("BillerName")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.BillerDescription)*@
+                        @Html.Label("BillerDescription")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.BillerType)*@
+                        @Html.Label("BillerType")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.CatalogVersion)*@
+                        @Html.Label("CatalogVersion")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.CountryCode)*@
+                        @Html.Label("CountryCode")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.CountryName)*@
+                        @Html.Label("CountryName")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Id)*@
+                        @Html.Label("Id")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.ResponseCode)*@
+                        @Html.Label("ResponseCode")
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.ResponseMessage)*@
+                        @Html.Label("ResponseMessage")
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BillerID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BillerName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BillerDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BillerType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CatalogVersion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CountryCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CountryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResponseCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResponseMessage)
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+</center>
+    <div class="pagination" style="margin-left: 400px">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
+    
+}
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+        </table>*@
